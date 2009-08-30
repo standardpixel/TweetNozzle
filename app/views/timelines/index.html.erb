@@ -1,0 +1,25 @@
+<h1>Listing timeline</h1>
+
+<table>
+	<tr>
+		<th>User</th><th>Status</th><th>Time</th><th>Clique</th>
+	</tr>
+<% @friends_timeline.each do |status| %>	
+	<% follow = @follows.find { |follow| follow.twitter === status.user.screen_name } %>
+	<tr>
+		<td>
+			<%= link_to image_tag( 
+				status.user.profile_image_url), :controller => 'follows', :action => 'show', :id => status.user.screen_name %>
+			<%= status.user.name %>
+		</td>
+		<td><%= status.text %></td>
+		<td><%= status.created_at %> via <%= status.source %></td>
+		<% if follow %>
+			<td><%= follow.clique.name %></td>
+		<% else %>
+			<td>No Clique</td>
+		<% end %>
+	</tr>
+	<div>
+<% end %>
+</table>
