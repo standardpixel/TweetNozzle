@@ -1,0 +1,40 @@
+<p>
+  <b>Name:</b>
+  <%=h @remote_follow.name %> (<%=h @remote_follow.screen_name %>)
+</p>
+<p>
+  <b>Clique:</b>
+	<% if @follow %>
+		<%=h @follow.clique.name %>
+	<% else %>
+		<%= link_to 'Add to a Clique', new_follow_path + "/" + @remote_follow.screen_name %>
+	<% end %>
+</p>
+<p>
+  <b>Description:</b>
+  <%=h @remote_follow.description %>
+</p>
+<p>
+  <b>Friendship standing:</b>
+	<%if @remote_follow.screen_name === 'standardpixel'%>
+	Hello <%=h @remote_follow.name %>, you are looking quite fetching today.
+	<%else%>
+	You <strong><%= @client.friendship_exists?('standardpixel', @remote_follow.screen_name) ? "do" : "don't" %></strong> follow 
+	<%=h @remote_follow.name %> and they 
+	<strong><%= @client.friendship_exists?(@remote_follow.screen_name, 'standardpixel') ? "do" : "don't" %></strong> follow you.
+	<%end%>
+	
+  
+</p>
+<% if @follow %>
+	<p>
+	  <b>Note:</b>
+	  <%=h @follow.note %>
+	</p>
+<% end %>
+
+
+<% if @follow %>
+	<%= link_to 'Edit', edit_follow_path(@follow) %> |
+<% end %>
+<%= link_to 'Back', follows_path %>

@@ -1,0 +1,24 @@
+<h1>Editing clique</h1>
+
+<% form_for(@clique) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :hidden %><br />
+    <%= f.check_box :hidden %>
+  </p>
+  <p>
+    <%= f.label :importance %><br />
+    <%= f.text_field :importance %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @clique %> |
+<%= link_to 'Back', cliques_path %>

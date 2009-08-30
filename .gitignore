@@ -1,0 +1,5 @@
+log/development.log
+log/* 
+!.gitignore
+.ds_store
+config/*.yml

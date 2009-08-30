@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @clique.name %>
+</p>
+
+<p>
+  <b>Hidden:</b>
+  <%=h @clique.hidden %>
+</p>
+
+<p>
+  <b>Importance:</b>
+  <%=h @clique.importance %>
+</p>
+
+
+<%= link_to 'Edit', edit_clique_path(@clique) %> |
+<%= link_to 'Back', cliques_path %>

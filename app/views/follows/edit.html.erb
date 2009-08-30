@@ -1,0 +1,22 @@
+<h1>Change <%= @follow.twitter %>'s Clique</h1>
+
+<% form_for(@follow) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label 'Clique' %><br />
+    <%= collection_select(:follow, :clique_id, Clique.all, :id, :name ) %>
+	<%= link_to 'Create a new Clique', cliques_path + "/new" %>
+
+  </p>
+  <p>
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @follow %> |
+<%= link_to 'Back', follows_path %>

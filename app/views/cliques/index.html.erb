@@ -1,0 +1,24 @@
+<h1>Listing cliques</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Hidden</th>
+    <th>Importance</th>
+  </tr>
+
+<% @cliques.each do |clique| %>
+  <tr>
+    <td><%=h clique.name %></td>
+    <td><%=h clique.hidden %></td>
+    <td><%=h clique.importance %></td>
+    <td><%= link_to 'Show', clique %></td>
+    <td><%= link_to 'Edit', edit_clique_path(clique) %></td>
+    <td><%= link_to 'Destroy', clique, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New clique', new_clique_path %> | <%= link_to 'List Follows', follows_path %>

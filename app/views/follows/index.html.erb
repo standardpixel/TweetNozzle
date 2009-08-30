@@ -1,0 +1,26 @@
+<h1>Listing follows</h1>
+
+<table>
+	<tr>
+		<th>Twitter User</th>
+		<th>Clique</th>
+	</tr>
+
+	<% @remote_follows.each do |remote_follow| %>
+		<% follow = @follows.find { |follow| follow.twitter === remote_follow.screen_name } %>
+		<tr>
+			<td title="<%=h remote_follow.description %>"><%=h remote_follow.name %></td>
+			<% if follow %>
+				<td><%=h follow.clique.name %></td>
+				<td><%= link_to 'Show', remote_follow.screen_name %></td>
+				<td><%= link_to 'Edit', edit_follow_path(follow) %></td>
+				<td>
+					<%= link_to 'Remove from Clique', follow, :confirm => 'Are you sure?', :method => :delete %>
+				</td>
+			<%else%>
+				<td><%= link_to 'Add to a Clique', new_follow_path + "/" + remote_follow.screen_name %></td>
+				<td colspan="4"><%= link_to 'Show', "/follows/" + remote_follow.screen_name %></td>
+			<%end%>
+		</tr>
+	<% end %>
+</table>
